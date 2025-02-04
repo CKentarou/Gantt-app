@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_02_04_113253) do
+ActiveRecord::Schema.define(version: 2025_02_04_113914) do
+
+  create_table "links", force: :cascade do |t|
+    t.integer "source"
+    t.integer "target"
+    t.string "link_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
