@@ -25,7 +25,7 @@ Gantt-app は、プロジェクト管理をサポートする Ruby on Rails ア�
 
 ## 技術スタック
 
-- Ruby on Rails 8.0.1
+- Ruby on Rails 6.1.7
 - PostgreSQL
 - DHTMLX Gantt & Kanban
 - Tailwind CSS
