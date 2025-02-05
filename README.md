@@ -28,7 +28,6 @@ Gantt-app は、プロジェクト管理をサポートする Ruby on Rails ア�
 - Ruby on Rails 6.1.7
 - PostgreSQL
 - DHTMLX Gantt & Kanban
-- Tailwind CSS
 - Devise（認証機能）
 
 ## インストール手順
