@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "projects#index"
+  root to: "homes#top"
   
   resources :projects do
     member do
