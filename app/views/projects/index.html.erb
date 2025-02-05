@@ -1,2 +1,11 @@
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+<%= link_to "New Project", new_project_path, data: { turbolinks: false } %>
+<% if @projects.empty? %>
+  <p>No projects have been created yet.</p>
+<% else %>
+  <% @projects.each do |project| %>
+    <div class="project">
+      <h2><%= project.text %></h2>
+      <%= link_to project.text, project_path(project), data: { turbolinks: false } %>
+    </div>
+  <% end %>
+<% end %>
