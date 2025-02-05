@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_02_04_113914) do
+ActiveRecord::Schema.define(version: 2025_02_04_121309) do
 
   create_table "links", force: :cascade do |t|
     t.integer "source"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2025_02_04_113914) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "name"
+    t.string "text"
     t.datetime "start_date"
     t.integer "duration"
     t.integer "prent"
