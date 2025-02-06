@@ -1,11 +1,15 @@
-<%= link_to "New Project", new_project_path, data: { turbolinks: false } %>
-<% if @projects.empty? %>
-  <p>No projects have been created yet.</p>
-<% else %>
-  <% @projects.each do |project| %>
-    <div class="project">
-      <h2><%= project.text %></h2>
-      <%= link_to project.text, project_path(project), data: { turbolinks: false } %>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>プロジェクト一覧</h1>
+    <%= link_to "New Project", new_project_path, class: "btn btn-primary", data: { turbolinks: false } %>
+  </div>
+  <% if @projects.empty? %>
+    <div class="alert alert-info">
+      <p>プロジェクトはまだありません</p>
+    </div>
+  <% else %>
+    <div class="row">
+      <%= render "projects/projects", projects: @projects %>
     </div>
   <% end %>
-<% end %>
+</div>
