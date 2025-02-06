@@ -10,21 +10,29 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      # プロジェクトの作成後にタスクを作成
+      # プロジェクト作成後にタスクを作成
       Task.create(
-        text: @project.text,         # プロジェクトの名前をタスクの名前として使用
+        text: @project.text,        
         start_date: @project.start_date,
         duration: @project.duration,
-        progress: 0,                # タスクの進捗はデフォルトで 0
-        parent: nil,                # 親タスクがない場合（必要に応じて設定）
-        project_id: @project.id     # タスクにプロジェクトIDを関連付け
+        progress: 0,                
+        parent: nil,                
+        project_id: @project.id     
       )
-
+  
+      # プロジェクト作成者をproject_usersに追加
+      ProjectUser.create(
+        project: @project,
+        user: current_user, 
+        role: "admin"
+      )
+  
       redirect_to project_path(@project)
     else
       render :new, status: :unprocessable_entity
     end
   end
+  
 
   def show
     @project = Project.find(params[:id])
@@ -34,6 +42,6 @@ class ProjectsController < ApplicationController
 
   # ストロングパラメータ
   def project_params
-    params.require(:project).permit(:text, :start_date, :duration, :parent, :progress)
+    params.require(:project).permit(:text, :start_date, :duration)
   end
 end
