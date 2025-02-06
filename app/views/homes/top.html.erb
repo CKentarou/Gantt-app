@@ -1,6 +1,4 @@
-ログインとサインアップのリンクを表示
 <% if !user_signed_in? %>
   <%= link_to "ログイン", new_user_session_path %>
   <%= link_to "サインアップ", new_user_registration_path %>
 <% end %>
-
