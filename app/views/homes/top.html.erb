@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+  <%= link_to "New Project", new_project_path, data: { turbolinks: false } %>
+    <h1>あなたか参加しているプロジェクト一覧</h1>
+    <% if @projects.empty? %>
+      <p>あなたが参加しているプロジェクトはありません</p>
+    <% else %>
+      <% @projects.each do |project| %>
+        <div class="project">
+          <h2><%= project.text %></h2>
+          <%= link_to project.text, project_path(project), data: { turbolinks: false } %>
+        </div>
+      <% end %>
+    <% end %>
+<% else %> 
+  <h1>ようこそ！</h1>
+  <p>このアプリは、プロジェクトの進捗を管理するためのアプリです。</p>
+  <p>プロジェクトを作成して、タスクを追加しましょう！</p>
+  <%= link_to "Sign up", new_user_registration_path, data: { turbolinks: false } %>
+  <%= link_to "Log in", new_user_session_path, data: { turbolinks: false } %>
+<% end %>
