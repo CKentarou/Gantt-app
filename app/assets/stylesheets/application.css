@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+.stretched-link {
+  text-decoration: none;
+}
+
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px); /* カードが少し浮き上がる */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* カードに影を追加 */
+}

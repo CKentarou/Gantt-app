@@ -1,35 +1,43 @@
-<h1>Create a New Project</h1>
+<div class="container d-flex justify-content-center mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="mb-4 text-center">Create a New Project</h1>
 
-<%= form_with model: @project, local: true do |form| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-      <ul>
-        <% @project.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+      <%= form_with model: @project, local: true, html: { class: 'form-horizontal' } do |form| %>
+        <% if @project.errors.any? %>
+          <div class="alert alert-danger">
+            <h2 class="h5"><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+            <ul>
+              <% @project.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="form-group mb-3">
+          <%= form.label :text, "タイトル", class: 'form-label' %>
+          <%= form.text_field :text, class: 'form-control', placeholder: "プロジェクトのタイトルを入力" %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= form.label :start_date, "開始日", class: 'form-label' %>
+          <%= form.date_field :start_date, class: 'form-control' %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= form.label :duration, "期間", class: 'form-label' %>
+          <%= form.number_field :duration, class: 'form-control', placeholder: "日数を入力" %>
+        </div>
+
+        <div class="form-group mt-3">
+          <%= form.submit "Create Project", class: 'btn btn-primary w-100' %>
+        </div>
+      <% end %>
+
+      <div class="text-center mt-3">
+        <%= link_to 'Back to Projects', projects_path, class: "btn btn-secondary" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_field :text %>
   </div>
-
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_field :start_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :duration %>
-    <%= form.number_field :duration %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Create Project" %>
-  </div>
-<% end %>
-
-<%= link_to 'Back to Projects', projects_path %>
+</div>
