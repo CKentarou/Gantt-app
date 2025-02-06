@@ -1,20 +1,25 @@
-<% if user_signed_in? %>
-  <%= link_to "New Project", new_project_path, data: { turbolinks: false } %>
-    <h1><%= current_user.name %>さんが参加しているプロジェクト一覧</h1>
+<div class="container mt-5">
+  <% if user_signed_in? %>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1><%= current_user.name %>さんが参加しているプロジェクト一覧</h1>
+      <%= link_to "New Project", new_project_path, class: "btn btn-primary", data: { turbolinks: false } %>
+    </div>
     <% if @projects.empty? %>
-      <p><%= current_user.name %>さんが参加しているプロジェクトはありません</p>
+      <div class="alert alert-info">
+        <p><%= current_user.name %>さんが参加しているプロジェクトはありません</p>
+      </div>
     <% else %>
-      <% @projects.each do |project| %>
-        <div class="project">
-          <h2><%= project.text %></h2>
-          <%= link_to project.text, project_path(project), data: { turbolinks: false } %>
-        </div>
-      <% end %>
+      <div class="row">
+        <%= render "projects/projects", projects: @projects %>
+      </div>
     <% end %>
-<% else %> 
-  <h1>ようこそ！</h1>
-  <p>このアプリは、プロジェクトの進捗を管理するためのアプリです。</p>
-  <p>プロジェクトを作成して、タスクを追加しましょう！</p>
-  <%= link_to "Sign up", new_user_registration_path, data: { turbolinks: false } %>
-  <%= link_to "Log in", new_user_session_path, data: { turbolinks: false } %>
-<% end %>
+  <% else %> 
+    <div class="text-center">
+      <h1>ようこそ！</h1>
+      <p>このアプリは、プロジェクトの進捗を管理するためのアプリです。</p>
+      <p>プロジェクトを作成して、タスクを追加しましょう！</p>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary mx-2", data: { turbolinks: false } %>
+      <%= link_to "Log in", new_user_session_path, class: "btn btn-secondary mx-2", data: { turbolinks: false } %>
+    </div>
+  <% end %>
+</div>
