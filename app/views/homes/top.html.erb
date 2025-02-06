@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
   <%= link_to "New Project", new_project_path, data: { turbolinks: false } %>
-    <h1>あなたか参加しているプロジェクト一覧</h1>
+    <h1><%= current_user.name %>さんが参加しているプロジェクト一覧</h1>
     <% if @projects.empty? %>
-      <p>あなたが参加しているプロジェクトはありません</p>
+      <p><%= current_user.name %>さんが参加しているプロジェクトはありません</p>
     <% else %>
       <% @projects.each do |project| %>
         <div class="project">
