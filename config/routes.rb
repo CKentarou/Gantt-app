@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/index'
   devise_for :users
   root to: "homes#top"
+
+  resources :users, only: [:index]
   
   resources :projects do
     member do
