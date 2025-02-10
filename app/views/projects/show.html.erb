@@ -17,3 +17,9 @@
     dp.init(gantt);
     dp.setTransactionMode("REST");
 </script>
+
+<% if current_user.projects.include?(@project) %>
+  <div class="m-3">
+    <%= link_to 'delete', project_path(@project), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'btn btn-danger' %>
+  </div>
+<% end %>
