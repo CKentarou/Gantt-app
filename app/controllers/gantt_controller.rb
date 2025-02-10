@@ -1,4 +1,7 @@
 class GanttController < ApplicationController
+  # CSRF対策を無効にする（APIエンドポイントとして使用するため）
+  protect_from_forgery with: :null_session
+
   # プロジェクトのタスクとリンクをJSON形式で返すアクション
   def data
     # パラメータからプロジェクトを取得
