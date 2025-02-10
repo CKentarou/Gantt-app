@@ -6,21 +6,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- アプリケーションのスタイルシートとJavaScriptを読み込む -->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Bootstrapのスタイルシートを読み込む -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <%= yield(:head) %>
   </head>
 
   <body>
+    <!-- ナビゲーションバーの定義 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
+        <!-- アプリケーションのホームページへのリンク -->
         <a class="navbar-brand" href="<%= root_path %>">Gantt-app</a>
 
+        <!-- ナビゲーションバーのトグルボタン -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
         </button>
 
+        <!-- ナビゲーションバーのリンク -->
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
@@ -34,6 +41,7 @@
             </li>
           </ul>
 
+          <!-- ユーザーのサインイン状態に応じたリンク -->
           <ul class="navbar-nav">
             <% if user_signed_in? %>
               <li class="nav-item">
@@ -52,9 +60,10 @@
       </div>
     </nav>
 
-    
+    <!-- コンテンツを表示するためのyield -->
     <%= yield %>  
 
+    <!-- BootstrapのJavaScriptを読み込む -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

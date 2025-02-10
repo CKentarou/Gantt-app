@@ -1,23 +1,29 @@
 <div class="container mt-5">
   <% if user_signed_in? %>
+    <!-- ユーザーがサインインしている場合 -->
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1><%= current_user.name %>さんが参加しているプロジェクト一覧</h1>
+      <!-- 新しいプロジェクトを作成するリンク -->
       <%= link_to "New Project", new_project_path, class: "btn btn-primary", data: { turbolinks: false } %>
     </div>
     <% if @projects.empty? %>
+      <!-- ユーザーが参加しているプロジェクトがない場合のメッセージ -->
       <div class="alert alert-info">
         <p><%= current_user.name %>さんが参加しているプロジェクトはありません</p>
       </div>
     <% else %>
+      <!-- ユーザーが参加しているプロジェクトの一覧を表示 -->
       <div class="row">
         <%= render "projects/projects", projects: @projects %>
       </div>
     <% end %>
   <% else %> 
+    <!-- ユーザーがサインインしていない場合 -->
     <div class="text-center">
       <h1>ようこそ！</h1>
       <p>このアプリは、プロジェクトの進捗を管理するためのアプリです。</p>
       <p>プロジェクトを作成して、タスクを追加しましょう！</p>
+      <!-- サインアップとログインのリンク -->
       <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary mx-2", data: { turbolinks: false } %>
       <%= link_to "Log in", new_user_session_path, class: "btn btn-secondary mx-2", data: { turbolinks: false } %>
     </div>

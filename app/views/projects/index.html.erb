@@ -1,13 +1,17 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
+    <!-- プロジェクト一覧のタイトル -->
     <h1>プロジェクト一覧</h1>
+    <!-- 新しいプロジェクトを作成するリンク -->
     <%= link_to "New Project", new_project_path, class: "btn btn-primary", data: { turbolinks: false } %>
   </div>
   <% if @projects.empty? %>
+    <!-- プロジェクトが存在しない場合のメッセージ -->
     <div class="alert alert-info">
       <p>プロジェクトはまだありません</p>
     </div>
   <% else %>
+    <!-- プロジェクトが存在する場合のプロジェクト一覧 -->
     <div class="row">
       <%= render "projects/projects", projects: @projects %>
     </div>
