@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.all
-  end
+    @projects = Project.joins(:project_users)
+                       .where('projects.public = ? OR project_users.user_id = ?', true, current_user.id)
+                       .distinct  end
 
   def new
     @project = Project.new
@@ -33,6 +34,14 @@ class ProjectsController < ApplicationController
     end
   end
   
+  def update
+    @project = Project.find(params[:id])
+    if @project.update(project_params)
+      redirect_to project_path(@project)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
   def show
     @project = Project.find(params[:id])

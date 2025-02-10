@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_02_06_005954) do
+ActiveRecord::Schema.define(version: 2025_02_10_055350) do
 
   create_table "links", force: :cascade do |t|
     t.integer "source"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2025_02_06_005954) do
     t.decimal "progress"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "public", default: false
   end
 
   create_table "tasks", force: :cascade do |t|

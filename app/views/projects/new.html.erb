@@ -30,6 +30,11 @@
           <%= form.number_field :duration, class: 'form-control', placeholder: "日数を入力" %>
         </div>
 
+        <div class="form-group mb-3">
+          <%= form.label :duration, "公開する", class: 'form-label' %>
+          <%= form.check_box :public, class: 'form-check-input' %>
+        </div>
+
         <div class="form-group mt-3">
           <%= form.submit "Create Project", class: 'btn btn-primary w-100' %>
         </div>
