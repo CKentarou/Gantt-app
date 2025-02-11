@@ -64,6 +64,6 @@ class ProjectsController < ApplicationController
 
   # ストロングパラメータを設定するメソッド
   def project_params
-    params.require(:project).permit(:text, :start_date, :duration)
+    params.require(:project).permit(:text, :start_date, :duration, :public)
   end
 end
