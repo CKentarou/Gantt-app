@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :authorize_resource, only: [:show]
+
   # プロジェクトの一覧を表示するアクション
   def index
     @projects = Project.joins(:project_users)
@@ -65,5 +67,13 @@ class ProjectsController < ApplicationController
   # ストロングパラメータを設定するメソッド
   def project_params
     params.require(:project).permit(:text, :start_date, :duration, :public)
+  end
+
+  # プロジェクトに参加しているメンバーのみ見ることができるようにする
+  def authorize_resource
+    project = Project.find(params[:id])
+    if !project.public && !project.project_users.exists?(user: current_user)
+      redirect_to root_path
+    end
   end
 end
