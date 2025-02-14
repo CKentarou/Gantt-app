@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index]
   
   resources :projects do
+    resources :help_tasks do
+      resources :help_tasks_applications, only: [:create, :update, :destroy]
+    end
     member do
       get :gantt
     end

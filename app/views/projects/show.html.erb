@@ -1,4 +1,12 @@
-<h1><%= @project.text %> - Gantt Chart</h1>
+<div class="d-flex align-items-center mb-3">
+  <h1 class="me-3"><%= @project.text %> - Gantt Chart</h1>
+  <div class="d-flex">
+    <%= link_to 'HelpTask', project_help_tasks_path(@project), class: 'btn btn-primary me-3' %>
+    <% if current_user.projects.include?(@project) %>
+      <%= link_to 'delete', project_path(@project), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'btn btn-danger' %>
+    <% end %>
+  </div>
+</div>
 
 <% content_for :head do %>
   <%= stylesheet_link_tag 'https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css' %>
@@ -17,9 +25,3 @@
     dp.init(gantt);
     dp.setTransactionMode("REST");
 </script>
-
-<% if current_user.projects.include?(@project) %>
-  <div class="m-3">
-    <%= link_to 'delete', project_path(@project), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'btn btn-danger' %>
-  </div>
-<% end %>
