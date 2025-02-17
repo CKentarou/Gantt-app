@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   
   # プロジェクトリソースのルーティング
   resources :projects do
+    resources :help_tasks do
+      resources :help_tasks_applications, only: [:create, :update, :destroy]
+    end
     member do
       # プロジェクトのガントチャート表示用のルーティング
       get :gantt

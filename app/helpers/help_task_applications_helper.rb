@@ -1,0 +1,2 @@
+module HelpTaskApplicationsHelper
+end
